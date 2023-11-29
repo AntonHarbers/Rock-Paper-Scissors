@@ -1,10 +1,15 @@
-const rockBtn = document.querySelector("#rockBtn");
-const paperBtn = document.querySelector("#paperBtn");
-const scissorsBtn = document.querySelector("#scissorsBtn");
-const resultDiv = document.querySelector("#result");
-const scoreDiv = document.querySelector("#score");
-const gameOverDiv = document.querySelector("#gameOverDiv");
-const playAgainBtn = document.querySelector(".playAgainBtn");
+const rockBtn = document.querySelector('#rockBtn');
+const paperBtn = document.querySelector('#paperBtn');
+const scissorsBtn = document.querySelector('#scissorsBtn');
+const resultDiv = document.querySelector('#result');
+const scoreDiv = document.querySelector('#score');
+const gameOverDiv = document.querySelector('.gameOverDiv');
+const playAgainBtn = document.querySelector('.playAgainBtn');
+const gameOverTextDiv = document.querySelector('#gameOverText');
+
+const rockAudio = document.querySelector('#rockAudio');
+const paperAudio = document.querySelector('#paperAudio');
+const scissorsAudio = document.querySelector('#scissorsAudio');
 
 var playerScore = 0;
 var computerScore = 0;
@@ -12,59 +17,61 @@ var computerScore = 0;
 const updateScoreUi = () => {
   scoreDiv.textContent = `Player score: ${playerScore} | Computer score: ${computerScore}`;
   if (playerScore === 5) {
-    gameOver("Congratulations, you Win!");
+    gameOver('Congratulations, you Win!');
   }
   if (computerScore === 5) {
-    gameOver("Computer wins! Better luck next time...")
+    gameOver('Computer wins! Better luck next time...');
   }
 };
 
 const gameOver = (gameOverText) => {
-  playAgainBtn.classList.remove("hidden");
-  gameOverDiv.classList.remove("hidden");
-  gameOverDiv.classList.add("gameOverDiv");
-  gameOverDiv.textContent = gameOverText;
-}
+  gameOverDiv.classList.remove('hidden');
+  gameOverDiv.classList.add('gameOverDiv');
+  gameOverTextDiv.textContent = gameOverText;
+};
 
 updateScoreUi();
 
-playAgainBtn.addEventListener("click", () => {
+playAgainBtn.addEventListener('click', () => {
   restartGame();
 });
 
-rockBtn.addEventListener("click", () => {
-  selectPlayerOption("rock");
+rockBtn.addEventListener('click', () => {
+  selectPlayerOption('rock');
+  rockAudio.play();
 });
 
-paperBtn.addEventListener("click", () => {
-  selectPlayerOption("paper");
+paperBtn.addEventListener('click', () => {
+  selectPlayerOption('paper');
+  paperAudio.play();
 });
 
-scissorsBtn.addEventListener("click", () => {
-  selectPlayerOption("scissors");
+scissorsBtn.addEventListener('click', () => {
+  selectPlayerOption('scissors');
+  scissorsAudio.play();
 });
 
 const restartGame = () => {
-  playAgainBtn.classList.add("hidden");
-  gameOverDiv.textContent = "";
-  gameOverDiv.classList.remove("gameOverDiv");
-  gameOverDiv.classList.add("hidden");
+  gameOverTextDiv.textContent = '';
+  gameOverDiv.classList.remove('gameOverDiv');
+  gameOverDiv.classList.add('hidden');
   playerScore = 0;
   computerScore = 0;
   updateScoreUi();
+  resultDiv.textContent = '';
 };
 
 const getComputerChoice = () => {
   const randomInt = Math.floor(Math.random() * 3);
   switch (randomInt) {
     case 0:
-      return "rock";
+      return 'rock';
     case 1:
-      return "paper";
+      return 'paper';
     case 2:
-      return "scissors";
+      return 'scissors';
     default:
-      return "rock";
+      return 'rock';
   }
 };
 
@@ -73,35 +80,35 @@ const playSingleRound = (playerSelection, compuerSelection) => {
     return "It's a draw!";
   }
   switch (playerSelection.toLowerCase()) {
-    case "rock":
-      if (compuerSelection === "paper") {
+    case 'rock':
+      if (compuerSelection === 'paper') {
         computerScore++;
         updateScoreUi();
-        return "You lose! Paper beats Rock";
+        return 'You lose! Paper beats Rock';
       } else {
         playerScore++;
         updateScoreUi();
-        return "You win! Rock beats Scissors";
+        return 'You win! Rock beats Scissors';
       }
-    case "paper":
-      if (compuerSelection === "scissors") {
+    case 'paper':
+      if (compuerSelection === 'scissors') {
         computerScore++;
         updateScoreUi();
-        return "You lose! Scissors beats Paper";
+        return 'You lose! Scissors beats Paper';
       } else {
         playerScore++;
         updateScoreUi();
-        return "You win! Paper beats Rock";
+        return 'You win! Paper beats Rock';
       }
-    case "scissors":
-      if (compuerSelection === "rock") {
+    case 'scissors':
+      if (compuerSelection === 'rock') {
         computerScore++;
         updateScoreUi();
-        return "You lose! Rock beats Scissors";
+        return 'You lose! Rock beats Scissors';
       } else {
         playerScore++;
         updateScoreUi();
-        return "You win! Scissors beats Paper";
+        return 'You win! Scissors beats Paper';
       }
     default:
       return "It's a draw!";

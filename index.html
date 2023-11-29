@@ -5,19 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="icon/x-image" href="./images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Rock Paper Scissors</h1>
+    <audio id="rockAudio" preload="auto">
+      <source src="./sounds/rock.wav" type="audio/wav" />
+    </audio>
+    <audio id="paperAudio" preload="auto">
+      <source src="./sounds/paper.wav" type="audio/wav" />
+    </audio>
+    <audio id="scissorsAudio" preload="auto">
+      <source src="./sounds/scissors.wav" type="audio/wav" />
+    </audio>
+    <h1>
+      <span class="rockTitle">Rock</span> ,
+      <span class="paperTitle">Paper</span> ,
+      <span class="scissorsTitle">Scissors</span>
+    </h1>
     <h2>Chose your weapon</h2>
     <div id="btnRow">
-      <button id="rockBtn">Rock</button>
-      <button id="paperBtn">Paper</button>
-      <button id="scissorsBtn">Scissors</button>
+      <button id="rockBtn"></button>
+      <button id="paperBtn"></button>
+      <button id="scissorsBtn"></button>
     </div>
     <div id="result"></div>
     <div id="score"></div>
-    <div class="hidden" id="gameOverDiv"></div>
-    <button class="playAgainBtn hidden">Play Again</button>
+    <div class="hidden gameOverDiv">
+      <div id="gameOverText"></div>
+      <button class="playAgainBtn">Play Again</button>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>

@@ -1,5 +1,5 @@
-Rock Paper Scissors Repo for the Odin Project
+# The Odin Project - Rock, Paper, Scissors
 
-    What is this project:
+This is a Rock, Paper, Scissors game written in javascript, html and css for the odin project.
 
-    What did I learn building it:
+[Live Link](https://antonharbers.github.io/Odin-rock-paper-scissors/)

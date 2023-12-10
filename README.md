@@ -4,6 +4,8 @@ This is a Rock, Paper, Scissors game written in javascript, html and css for the
 
 [Live Link](https://antonharbers.github.io/Odin-rock-paper-scissors/)
 
+![Project Image](./images/projectImage.png)
+
 ## Folder Structure
 
 ```

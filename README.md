@@ -28,15 +28,11 @@ The biggest key concept I take away from this project are Eventlisteners and the
 
 Add an HTML element to the dom either directly through the HTML document or using Javascript:
 
-HTML:
-
-```
+```html
       <button class="playAgainBtn">Play Again</button>
 ```
 
-JS:
-
-```
+```js
     let playAgainBtnElement = document.createElement('button');
     playAgainBtnElement.classList.add('playAgainBtn')
     // append the element to the needed DOM location here
@@ -46,9 +42,7 @@ JS:
 
 Select this element in your JS code. Important to not is that the element needs to be selectable with a query selector in the Javascript code:
 
-JS:
-
-```
+```js
 const playAgainBtn = document.querySelector('.playAgainBtn');
 
 ```
@@ -57,9 +51,7 @@ const playAgainBtn = document.querySelector('.playAgainBtn');
 
 Assign the needed event listener with the following syntax:
 
-JS:
-
-```
+```js
     playAgainBtn.addEventListener('click', () => {
         restartGame();
     })
@@ -73,9 +65,7 @@ Another key concept this project shows us is how easy it is to use Javascript to
 
 An example of this can be seen in our "updateScoreUI" function:
 
-JS:
-
-```
+```js
     const updateScoreUi = () => {
     scoreDiv.textContent = `Player score: ${playerScore} | Computer score: ${computerScore}`; // THIS LINE RIGHT HERE
     computerScore >= 5 && gameOver('Computer wins! Better luck next time...');
@@ -89,9 +79,7 @@ We are able to add new text to our scoreDiv by simply setting the textContent eq
 
 Even in a basic game like rock, paper, scissors it is important to have a well designed game loop. For this game all that really needs to be figured out is how to keep score and how to implement the turns. My solution was to have a scoreCounter variable which would be incremented based on the result of any given round:
 
-JS:
-
-```
+```js
 // The counter variables need to be initialized:
     var playerScore = 0;
     var computerScore = 0;
@@ -100,9 +88,7 @@ JS:
 
 For the game loop itself I have an event listener on all the players weapon options which when fired will get a random choice from the computer player, compare the options and then return a result of one round. After every round there is another function checking weather the game is over and handling the UI updated and resetting of state accordingly:
 
-JS:
-
-```
+```js
 // Here are the event listener:
 
     rockBtn.addEventListener('click', () => {
@@ -167,17 +153,13 @@ Important to note here is that the internal state of our game is not maintained 
 
 A challange I set myself for this project was to include some basic audio whenever the user made a selection. To implement this I added <audio> elements to the HTML, selected these in Javascript and then used the play() methods whenever the user would select one of the weapon options for a round:
 
-HTML:
-
-```
+```html
     <audio id="rockAudio" preload="auto">
       <source src="./sounds/rock.wav" type="audio/wav" />
     </audio>
 ```
 
-JS:
-
-```
+```js
 // Selecting the correct element:
     const rockAudio = document.querySelector('#rockAudio');
 
@@ -195,9 +177,7 @@ Instead of adding the Images directly to the HTML using the <img> tags I opted f
 
 To add an image to the background of an element through CSS, just add the path to the background-image property and tweak the other background properties as needed:
 
-CSS:
-
-```
+```css
     #rockBtn,
     #paperBtn,
     #scissorsBtn {
@@ -221,9 +201,7 @@ CSS:
 
 Once I was satisfied with the Images I wanted to implement some basic hover animations. I did this as shown below:
 
-CSS:
-
-```
+```css
     #rockBtn:hover,
     #paperBtn:hover,
     #scissorsBtn:hover {
